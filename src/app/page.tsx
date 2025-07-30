@@ -1,102 +1,77 @@
-import Image from "next/image";
+import Header from "./components/Header";
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // controls movable bar upon menu item mouse hover
+  const handleMenuItemHover = () => {};
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <Header />
+      {/* Welcome */}
+      <section className="min-h-screen px-4 lg:px-8 py-20">
+        <div className="flex m-auto max-w-7xl w-full">
+          <div className="flex m-auto px-8 py-4 border border-white/20 rounded-md shadow-md justify-center">
+            <p className="text-4xl font-medium text-[#333] text-center">
+              Hi there! <br />
+              I'm Quinn Bruckmann, <br />
+              and this is my Portfolio!
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+      {/* Link to profiles */}
+      <section className="min-h-screen px-4 lg:px-8 ">
+        <div>
+          <h2 className="text-4xl font-bold">Profiles</h2>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab iusto
+            illo eligendi, necessitatibus impedit esse commodi odio atque hic
+            sed deserunt magnam aspernatur molestiae sunt dicta, officiis,
+            temporibus vitae aliquam quas ex! Ipsa incidunt ducimus voluptate
+            illo tempore, eaque maiores aut nisi sed culpa, aspernatur corporis
+            perspiciatis alias? Corrupti laudantium aspernatur dolorum,
+            distinctio vero hic pariatur molestias quaerat sunt, non totam
+            fugiat perspiciatis libero magni unde quae consequatur? Reiciendis
+            quibusdam repellat cumque delectus! Mollitia reprehenderit laborum
+            delectus tenetur culpa fuga, nesciunt unde officia necessitatibus
+            assumenda facilis quos ea? Enim similique ducimus rem repellat nemo
+            repellendus eaque quas expedita, illo nostrum.
+          </p>
+        </div>
+      </section>
+      {/* latest projects */}
+      <section className="min-h-screen px-4 lg:px-8 ">
+        <div>
+          <h2 className="text-4xl font-bold">Projects</h2>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab iusto
+            illo eligendi, necessitatibus impedit esse commodi odio atque hic
+            sed deserunt magnam aspernatur molestiae sunt dicta, officiis,
+            temporibus vitae aliquam quas ex! Ipsa incidunt ducimus voluptate
+            illo tempore, eaque maiores aut nisi sed culpa, aspernatur corporis
+            perspiciatis alias? Corrupti laudantium aspernatur dolorum,
+            distinctio vero hic pariatur molestias quaerat sunt, non totam
+            fugiat perspiciatis libero magni unde quae consequatur? Reiciendis
+            quibusdam repellat cumque delectus! Mollitia reprehenderit laborum
+            delectus tenetur culpa fuga, nesciunt unde officia necessitatibus
+            assumenda facilis quos ea? Enim similique ducimus rem repellat nemo
+            repellendus eaque quas expedita, illo nostrum.
+          </p>
+        </div>
+      </section>
+      {/* All html/css/js projects */}
+      {/* All project history */}
+
+      <footer className="fixed bottom-0 w-full py-2 border-t-2 border-white/20 rounded-t-md bg-gray-200/40">
+        <div className=" w-full top-100 px-12 pt-4 pb-1 justify-start">
+          <p className="text-sm">Author: Quinn Bruckmann</p>
+          <p className="text-sm">Email: quinnyb64@gmail.com</p>
+          <p className="text-sm">
+            <a href="https://github.com/QuinnyPB">
+              Github: https://github.com/QuinnyPB
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
   );
