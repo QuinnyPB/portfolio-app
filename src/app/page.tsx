@@ -1,21 +1,20 @@
 import Header from "./components/Header";
+import "./home.css";
 
 export default function Home() {
   // controls movable bar upon menu item mouse hover
-  const handleMenuItemHover = () => {};
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <Header />
       {/* Welcome */}
-      <section className="min-h-screen px-4 lg:px-8 py-20">
-        <div className="flex m-auto max-w-7xl w-full">
-          <div className="flex m-auto px-8 py-4 border border-white/20 rounded-md shadow-md justify-center">
-            <p className="text-4xl font-medium text-[#333] text-center">
-              Hi there! <br />
-              I'm Quinn Bruckmann, <br />
-              and this is my Portfolio!
-            </p>
+      <section className="min-h-screen px-4 lg:px-8 py-4">
+        <div className="flex m-auto max-w-7xl w-full justify-start">
+          {/* <div className="intro-text flex px-8 py-4 border border-white/20 rounded-md shadow-md justify-center"> 
+              <p className="intro-text text-xl font-medium text-[#333] text-center"></p>
+*/}
+          <div className="intro-div max-w-4xl border border-white/20 shadow-md">
+            <p>Hi there! I'm Quinn Bruckmann, and this is my Portfolio!</p>
           </div>
         </div>
       </section>

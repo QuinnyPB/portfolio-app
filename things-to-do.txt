@@ -1,3 +1,4 @@
+> apply typing animation to .intro-text 
 > apply border effect on header items
 > apply routing logic to header items
 > make header fixed on every page
