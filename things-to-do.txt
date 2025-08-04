@@ -1,6 +1,3 @@
-> apply typing animation to .intro-text 
-> apply border effect on header items
-> apply routing logic to header items
-> make header fixed on every page
-> insert elements displaying projects
-> make said element modally focused upon click
+> fix right border shortening u
+> fix text overflow upon window shortening
+> NOTE: everything should fit onto the screen regardless of window size

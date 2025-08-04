@@ -1,16 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @tailwind utilities;
 
+@font-face {
+  font-family: "Custom-AgencyFB";
+  src: url("../../../fonts/AGENCYB.TTF");
+}
+
+@font-face {
+  font-family: ;
+}
+
 :root {
-  --main-color-1: hsl(340, 97%, 44%);
-  --main-color-2: hsl(31, 95%, 55%);
+  --default1: ;
+  --default2: ;
+  --default-text: ;
+  --light1: hsl(53, 29%, 95%);
+  --light2: hsl(54, 33%, 94%);
+  --light-text: ;
+  --dark1: ;
+  --dark1: ;
+  --dark-text: ;
+  --white: #fff;
+  --black: #333;
   --background-white-1: #f9fafb;
   --background-white-2: #f3f4f6;
 }
 
 * {
   box-sizing: border-box;
-  font-family: Outfit;
+  font-family: "Custom-AgencyFB";
 }
 
 body {
