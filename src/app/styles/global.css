@@ -1,12 +1,19 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Custom-AgencyFB";
-  src: url("../../../fonts/AGENCYB.TTF");
+  font-family: "agency-reg";
+  /* src: url("../../../fonts/AGENCYB.TTF"); */
+  src: url("../../../fonts/agencyfb_reg.ttf");
 }
 
 @font-face {
-  font-family: ;
+  font-family: "agency-bold";
+  src: url("../../../fonts/agencyfb_bold.ttf");
+}
+
+@font-face {
+  font-family: "BitCount";
+  src: url("../../../fonts/BitcountSingle-VariableFont_CRSV\,ELSH\,ELXP\,slnt\,wght.ttf");
 }
 
 :root {
@@ -27,11 +34,19 @@
 
 * {
   box-sizing: border-box;
-  font-family: "Custom-AgencyFB";
+  font-family: "agency-reg";
+  letter-spacing: 1px;
 }
 
 body {
   font-size: 1.125rem;
   padding: 0;
   margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+html {
+  height: 100%;
+  overflow: hidden;
 }

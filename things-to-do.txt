@@ -1,3 +1,7 @@
 > fix right border shortening u
 > fix text overflow upon window shortening
 > NOTE: everything should fit onto the screen regardless of window size
+> intro effect:
+  >start off with blank screen. Possibly set canvas background to black.
+  >implement grid effect.
+  >Use peak off grid squares to snip out canvas background, revealing home page.
