@@ -1,7 +1,6 @@
-> fix right border shortening u
-> fix text overflow upon window shortening
 > NOTE: everything should fit onto the screen regardless of window size
-> intro effect:
-  >start off with blank screen. Possibly set canvas background to black.
-  >implement grid effect.
-  >Use peak off grid squares to snip out canvas background, revealing home page.
+> Add a cool animation background effect. Yet to figure out what exactly tho.
+> Create a wheel toggling through projects on left side (below my name/title), which will display project summary and details on rightside.
+
+give license credit:
+Sound Effect by <a href="https://pixabay.com/users/universfield-28281460/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=199277">Universfield</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=199277">Pixabay</a>

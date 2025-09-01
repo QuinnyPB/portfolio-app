@@ -1,5 +1,11 @@
 @tailwind utilities;
 
+@layer utilities {
+  .pause {
+    animation-play-state: paused;
+  }
+}
+
 @font-face {
   font-family: "agency-reg";
   /* src: url("../../../fonts/AGENCYB.TTF"); */

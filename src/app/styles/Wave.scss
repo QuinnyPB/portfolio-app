@@ -1,0 +1,42 @@
+@import "../../libs/typed/typed.scss";
+
+#first-page {
+  animation-name: none;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+$options: (
+  name: "",
+  caret: true,
+  caret-speed: 0.4,
+  caret-width: 0.4ch,
+  caret-color: currentColor,
+  caret-space: 0.1ch,
+  delay: 1,
+  iterations: 0,
+  end-on: "> click to boot system....",
+);
+
+$speeds: (
+  type: 0.05,
+  // pause-typed: 2,
+  // delete: 0.08,
+  // pause-deleted: 1,,,
+);
+
+#first-page {
+  @include typed(
+    "this text does nothing, refer to '$options'",
+    $speeds,
+    $options
+  );
+}
+
+@keyframes fadeOut {
+  to {
+    /* color: #222; */
+    opacity: 0;
+  }
+}

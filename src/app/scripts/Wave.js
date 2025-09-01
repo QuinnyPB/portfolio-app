@@ -1,10 +1,22 @@
-import { useEffect, useRef } from "react";
+"use client";
 
-export default function Wave() {
+import { useEffect, useRef, useState } from "react";
+import "../styles/Wave.scss";
+
+export default function Wave({ isPaused, setIsPaused }) {
   const canvasRef = useRef(null);
   const bgCanvasRef = useRef(null);
+  let hasPlayed = useRef(false);
 
+  function IntroAnimation() {}
   useEffect(() => {
+    if (isPaused) {
+      console.log("animation shouldn't run");
+      return;
+    }
+    hasPlayed.current = true;
+    console.log("animation should run");
+
     const c = canvasRef.current;
     const $ = c.getContext("2d");
     const bg_c = bgCanvasRef.current;
@@ -46,7 +58,11 @@ export default function Wave() {
     bg_$.fillStyle = "#222";
     bg_$.fillRect(0, 0, w, h);
 
-    // animation part
+    // is necessary here to remove unwanted animation flash
+    document.getElementById("bg-layer").style.background = "none";
+    document.getElementById("first-page").style.display = "none";
+
+    // main animation sequence loop
     function loop() {
       $.clearRect(0, 0, c.width, c.height);
 
@@ -71,18 +87,19 @@ export default function Wave() {
             h / 2 - (opts.grid * opts.size) / 2 + opts.size / 2
           );
 
-          let color = `hsl(${((time - distance / 2) * 180) / 20}, 60%, 50%)`;
+          // let color = `hsl(${((time - distance * 5) * 180) / 20}, 60%, 50%)`;
+          // let color = `#222`;
           $.globalCompositeOperation = "destination-over";
           // let color = `hsl(212 57.3% 41.8%)`;
-          $.fillStyle = color;
-          $.shadowBlur = 8;
-          $.shadowColor = color;
-          $.fillRect(
-            -size / 2 + opts.size * square.x,
-            -size / 2 + opts.size * square.y,
-            size,
-            size
-          );
+          // $.fillStyle = color;
+          // $.shadowBlur = 8;
+          // $.shadowColor = color;
+          // $.fillRect(
+          //   -size / 2 + opts.size * square.x,
+          //   -size / 2 + opts.size * square.y,
+          //   size,
+          //   size
+          // );
 
           // Background canvas erasure
           bg_$.save(); // Also needed to isolate transformation state
@@ -129,6 +146,43 @@ export default function Wave() {
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationFrameId);
     };
+  }, [isPaused]);
+
+  useEffect(() => {
+    // Handle user click to start animation and exit first page
+    const firstPage = document.getElementById("first-page");
+    document.addEventListener("DOMContentLoaded", function () {
+      firstPage.addEventListener("click", function () {
+        // allows animation to start
+        setIsPaused(false);
+      });
+    });
+  });
+
+  let clicked = false;
+  const playSound = () => {
+    // stops spamming of sound upon multi-clicks
+    if (clicked == true) {
+      return;
+    }
+    clicked = true;
+
+    const audio = new Audio("/sounds/synth01-edited.mp3");
+    document.getElementById("first-page").style.animationName = "fadeOut";
+    setTimeout(() => {
+      audio.play();
+      setIsPaused(false);
+    }, 1550);
+  };
+
+  // delete canvas
+  useEffect(() => {
+    setTimeout(() => {
+      let canvas01 = document.getElementById("animation-layer");
+      let canvas02 = document.getElementById("bg-layer");
+      canvas01.parentNode.removeChild(canvas01);
+      canvas02.parentNode.removeChild(canvas02);
+    }, 5000);
   }, []);
 
   return (
@@ -148,7 +202,7 @@ export default function Wave() {
           pointerEvents: "none",
         }}
         className="intro-canvas"
-      />
+      ></canvas>
       <canvas
         id="bg-layer"
         ref={bgCanvasRef}
@@ -159,11 +213,20 @@ export default function Wave() {
           zIndex: 1,
           width: "100vw",
           height: "100vh",
-          // display: "none",
-          // background: "#222",
+          background: "#222",
           pointerEvents: "none",
         }}
-      />
+      ></canvas>
+
+      {/* bootup window + audio */}
+      <div
+        id="first-page"
+        className="absolute text-xl text-orange-300 bg-[#222] w-full h-full z-51 pt-4 pl-4"
+        style={{}}
+        onClick={playSound}
+      >
+        {/* Text is found in the Wave.scss file */}
+      </div>
     </>
   );
 }

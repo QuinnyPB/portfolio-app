@@ -1,74 +1,16 @@
-/* .body-x-borders {
-  position: relative;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
-  border-left: 1px solid;
-  width: auto;
-  height: 90vh;
-  z-index: 1;
-}
-@keyframes shorten-x-borders {
-} */
-
-/* .body-y-borders {
-  position: absolute;
-  width: auto;
-  height: 90vh;
-  z-index: 1;
-}
-@keyframes shorten-y-borders {
-} */
-/* .intro-canvas {
-  animation: intro-canvas-fadeOut 2s ease-in forwards;
-}
-@keyframes intro-canvas-fadeOut {
-  to {
-    opacity: 0;
+@tailwind utilities;
+@layer utilities {
+  .pause {
+    animation-play-state: paused;
   }
-} */
 
-.video-feed-container {
-  position: relative;
-  overflow: hidden;
-}
-.video-feed {
-  position: absolute;
-  pointer-events: none;
-  inset: -200%;
-  z-index: 1;
-  opacity: 0.5;
-  background-image: url("/static-feed.jpg");
-  animation: static-effect 20ms linear infinite both;
-}
-@keyframes static-effect {
-  0% {
-    transform: translateX(10%) translateY(10%);
-  }
-  100% {
-    transform: translateX(-10%) translateY(-10%);
-  }
-}
-
-/* .video-grid-container {
-  p;
-} */
-.video-grid {
-  display: grid;
-  position: absolute;
-  grid-template-columns: 100px 100px;
-  grid-template-rows: auto;
-  border: 1px solid red;
-}
-@keyframes grid-intro-effect {
-  to {
+  .running {
+    animation-play-state: running;
   }
 }
 
 .intro-card {
-  position: absolute;
   opacity: 0;
-  z-index: 50;
   font-family: "BitCount";
   animation-name: intro-card-fadeInOut;
   animation-duration: 3s;
@@ -77,8 +19,6 @@
   animation-fill-mode: forwards;
 }
 @keyframes intro-card-fadeInOut {
-  0% {
-  }
   50% {
     opacity: 1;
   }
@@ -87,31 +27,11 @@
   }
 }
 
-.author-text {
-  opacity: 0;
-  animation-name: body-leftRight-fadeIn;
-  animation-duration: 2s;
-  animation-delay: 4s;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
-}
-
-.body {
-  /* border: 1px solid lime; */
-  width: auto;
-  height: auto;
-  overflow: hidden;
-}
-
 .body-borders {
-  position: absolute;
-  border: 1px solid black;
+  /* pointer-events: none; */
   opacity: 0;
-  pointer-events: none;
-  z-index: 50;
-  inset: 0;
   animation-name: container-block-fadeIn, container-animate-shadow;
-  animation-duration: 2s, 2s;
+  animation-duration: 1s, 2s;
   animation-delay: 4s, 4s;
   animation-timing-function: ease-in, aese-in;
   animation-fill-mode: forwards, forwards;
@@ -122,42 +42,97 @@
   }
 }
 @keyframes container-animate-shadow {
-  from {
+  /* from {
     --tw-shadow: 0 0 #0000;
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
       var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   to {
     --tw-shadow-alpha: 50%;
-    --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, oklab(from
+    --tw-shadow: 0 2px 3px -1px var(--tw-shadow-color, oklab(from
               rgb(0 0 0 / 0.1) l a b / 50%)),
       0 2px 4px -2px var(--tw-shadow-color, oklab(from rgb(0 0 0 / 0.1) l a b /
               50%));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow),
       var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
+  } */
 }
 
+.author-text {
+  opacity: 0;
+  animation-name: body-leftRight-fadeIn;
+  animation-duration: 1s;
+  animation-delay: 5s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
 .body-left,
 .body-right {
   position: relative;
-  background-color: beige;
+  background-color: transparent;
   /* height: max-content; */
   /* max-height: max-content; */
   opacity: 0;
   animation-name: body-leftRight-fadeIn;
-  animation-duration: 2s;
-  animation-delay: 4s;
+  animation-duration: 1s;
+  animation-delay: 5s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 }
 
 .body-right {
-  background-color: bisque;
-  /* z-index: 2; */
+  background-color: transparent;
 }
 @keyframes body-leftRight-fadeIn {
   to {
     opacity: 1;
   }
 }
+
+/* Moving highlighter tab */
+.moving-tab {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 2px solid orange;
+  border-right: none;
+  border-left: none;
+}
+
+.item {
+  display: flex;
+  /* flex-direction: row-reverse; */
+  width: 100%;
+  padding: calc(var(--spacing) * 4);
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-left: none;
+  border-right: none;
+  border-image: linear-gradient(to left, transparent, transparent, transparent)
+    10;
+}
+.item:hover {
+  border: 1px solid;
+  border-left: none;
+  border-right: none;
+  border-image: linear-gradient(to right, transparent 30%, #000563 60%) 10;
+  animation: item-showBorders;
+}
+@keyframes item-showBorders {
+}
+
+/* Author's note: tailwindcss screen sizing doesn't seem to work for some properties (e.g. flex-direction) properly so I am hard-coding it here */
+/* xs screens */
+/* sm screens */
+/* @media (width: 40rem) {
+  .body {
+    flex-direction: row;
+  }
+} */
+/* md screens */
+/* @media (min-width: 48rem) {
+  .body {
+    flex-direction: row;
+  }
+} */
+/* lg screens */
