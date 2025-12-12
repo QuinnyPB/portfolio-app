@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind utilities;
 @layer utilities {
   .pause {
@@ -66,6 +67,44 @@
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
 }
+
+.body-left-authorText {
+  font-family: "Raleway";
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.body-left-authorText > * {
+  font-family: "Raleway";
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.category-options {
+  font-family: "Raleway";
+  font-weight: 500;
+  flex-shrink: 1;
+  width: 40%;
+  border: 3px solid transparent;
+  text-wrap: nowrap;
+  cursor: pointer;
+  transition: ease-in 100ms;
+  clip-path: rect(0px, 15px, 15px, 0px);
+  clip-path: view-box;
+}
+.category-options:hover {
+  border-left: 3px solid black;
+  color: #00000096;
+  padding-left: 1rem;
+}
+.category-options:focus {
+  border-left: 3px solid black;
+  color: #00000096;
+  padding-left: 1rem;
+}
+
 .body-left,
 .body-right {
   position: relative;
@@ -99,6 +138,15 @@
   border-left: none;
 }
 
+.item::before {
+  animation-name: slideIn;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in-out;
+}
+@keyframes slideIn {
+  to {
+  }
+}
 .item {
   display: flex;
   /* flex-direction: row-reverse; */
@@ -110,25 +158,30 @@
   border-right: none;
   border-image: linear-gradient(to left, transparent, transparent, transparent)
     10;
+  transition: ease-in 100ms;
 }
 .item:hover {
+  color: #00000096;
   border: 1px solid;
   border-left: none;
   border-right: none;
   border-image: linear-gradient(to right, transparent 30%, #000563 60%) 10;
-  animation: item-showBorders;
+  /* animation: item-showBorders; */
+  padding-right: 2rem;
 }
 @keyframes item-showBorders {
 }
 
 /* Author's note: tailwindcss screen sizing doesn't seem to work for some properties (e.g. flex-direction) properly so I am hard-coding it here */
 /* xs screens */
+/* @media (width: 32rem) {} */
 /* sm screens */
 /* @media (width: 40rem) {
   .body {
     flex-direction: row;
   }
 } */
+
 /* md screens */
 /* @media (min-width: 48rem) {
   .body {

@@ -1,14 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import "../styles/Wave.scss";
+// import "../styles/Wave.scss";
 
 export default function Wave({ isPaused, setIsPaused }) {
   const canvasRef = useRef(null);
   const bgCanvasRef = useRef(null);
   let hasPlayed = useRef(false);
 
-  function IntroAnimation() {}
+  // function IntroAnimation() {}
+
   useEffect(() => {
     if (isPaused) {
       console.log("animation shouldn't run");

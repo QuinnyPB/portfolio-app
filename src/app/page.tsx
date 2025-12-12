@@ -6,12 +6,15 @@ import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 import Wave from "./scripts/Wave";
 import { repo, repos } from "./endpoints/routes";
+import { Raleway } from "next/font/google";
 
+const raleway = Raleway({ subsets: ["latin"], weight: ["200", "300", "400"] });
 export default function Home() {
   const [pageTheme, setPageTheme] = useState("default");
   const themes = ["default", "light", "dark"];
   const [animationIsPaused, setAnimationIsPaused] = useState(true);
-  const items_list = [
+  const [givenList, setGivenList] = useState([""]);
+  const items_list01 = [
     "HTML Project",
     "React Project",
     "C++ Project",
@@ -19,7 +22,29 @@ export default function Home() {
     "Compiler",
     "Interpreter",
   ];
+  const items_list02 = [
+    "Item List 02",
+    "Item List 02",
+    "Item List 02",
+    "Item List 02",
+  ];
+  const items_list03 = [
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+    "Item List 03",
+  ];
 
+  // effect hook for animations
   useEffect(() => {
     const introCard = document.getElementById("intro-card");
     const authorText = document.getElementById("author-text");
@@ -44,6 +69,27 @@ export default function Home() {
     }
   }, [animationIsPaused]);
 
+  // effect hook for fecthingn repos list from github
+  useEffect(() => {
+    renderList(givenList);
+  }, [givenList]);
+
+  function renderList(givenList: string[]) {
+    return (
+      <>
+        {givenList.map((item, i) => (
+          <div
+            key={i}
+            id="item"
+            className="item flex-row-reverse md:flex-row text-nowrap"
+          >
+            {item}
+          </div>
+        ))}
+      </>
+    );
+  }
+
   return (
     <div
       id="app-page"
@@ -51,16 +97,16 @@ export default function Home() {
     >
       <Wave isPaused={animationIsPaused} setIsPaused={setAnimationIsPaused} />
 
-      <div
+      {/* <div
         id="author-text"
-        className="author-text absolute left-[22px] top-[8px] md:left-[55px] text-[1rem]"
+        className="author-text absolute left-[22px] top-[8px] md:left-[55px] text-[1rem] z-3"
       >
         By Quinn Bruckmann
-      </div>
+      </div> */}
 
       <div
         id="container-block"
-        className="relative m-2 mb-0 p-2 mt-8 md:m-8 md:p-4 bg-[var(--light2)] h-[90vh] "
+        className="relative m-4 p-2 bg-[var(--light2)] h-[95vh] "
       >
         <div
           id="body-borders"
@@ -68,20 +114,40 @@ export default function Home() {
         >
           <div
             id="body"
-            className="body flex flex-col sm:flex-row justify-center items-center w-auto h-full overflow-hidden "
+            className="body flex flex-row justify-center items-center w-auto h-full overflow-hidden "
           >
             <div
               id="body-left"
-              className="body-left flex flex-col w-full h-full justify-between border-b-1 border-black"
+              className="body-left flex flex-col w-full h-full justify-between"
             >
-              <div className="flex flex-row md:flex-col justify-start m:text-[3vw] md:text-2xl shrink overflow-scroll space-x-6 md:space-x-0 lg:text-[2vw]">
-                <div className="shrink text-nowrap">Web Dev</div>
-                <div className="shrink text-nowrap">Software Dev</div>
-                <div className="shrink text-nowrap">Systems Dev</div>
-                <div className="shrink text-nowrap">Projects</div>
+              <div className="flex flex-col justify-start text-xl shrink overflow-scroll space-y-4 md:space-x-0">
+                <button
+                  className="flex category-options p-2"
+                  onClick={() => setGivenList(items_list01)}
+                >
+                  Web Dev
+                </button>
+                <button
+                  className="flex category-options p-2"
+                  onClick={() => setGivenList(items_list02)}
+                >
+                  Software Dev
+                </button>
+                <button
+                  className="flex category-options p-2"
+                  onClick={() => setGivenList(items_list03)}
+                >
+                  About Me
+                </button>
+                <button className="flex category-options p-2">
+                  This Website?
+                </button>
               </div>
-              <div className="hidden sm:block shrink text-[2vw] bg-red-300">
+              <div className={`body-left-authorText shrink text-[2em]`}>
                 Quinn Bruckmann
+                <p className={`shrink text-[1rem]`}>
+                  Junior Web & Software Developer
+                </p>
               </div>
             </div>
             <div id="intro-card" className="intro-card absolute z-2 text-4xl">
@@ -89,11 +155,12 @@ export default function Home() {
             </div>
             <div
               id="body-right"
-              className="body-right flex flex-col shrink justify-start md:justify-center w-full h-full text-2xl sm:text-[3vw] overflow-auto"
+              className="body-right flex flex-col shrink justify-start md:justify-center w-full h-full text-2xl overflow-auto"
               style={{ fontFamily: "agency-bold" }}
             >
               {/* <div id="moving-tab" className="moving-tab"></div> */}
-              {items_list.map((item, i) => (
+              {renderList(givenList)}
+              {/* {items_list01.map((item, i) => (
                 <div
                   key={i}
                   id="item"
@@ -101,7 +168,7 @@ export default function Home() {
                 >
                   {item}
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
         </div>
